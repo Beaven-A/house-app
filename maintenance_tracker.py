@@ -72,7 +72,8 @@ if st.session_state.authenticated:
                     "Solution": solution,
                     "Status": status,
                 }
-                df = df.append(new_entry, ignore_index=True)
+                new_df = pd.DataFrame([new_entry])
+                df = pd.concat([df, new_df], ignore_index=True)
                 save_data(df)
                 st.success("Entry added successfully!")
                 st.rerun()
